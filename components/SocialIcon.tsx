@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react';
+import type { ReactNode } from 'react';
 
 /**
  * SocialIcon — a contact/social link as a branded icon inside an <a>. Builds the right
@@ -69,28 +69,32 @@ function hrefFor(platform: Platform, value: string): string {
   return /^https?:\/\//.test(v) ? v : `https://${v}`;
 }
 
-interface SocialIconProps extends Omit<SVGProps<SVGSVGElement>, 'className'> {
+interface SocialIconProps {
   platform: Platform;
   value: string;
   className?: string;
+  /** Optional label — when present, renders icon + text (use for a contact CTA button). */
+  children?: ReactNode;
 }
 
-export default function SocialIcon({ platform, value, className = '', ...rest }: SocialIconProps) {
+export default function SocialIcon({ platform, value, className = '', children }: SocialIconProps) {
   const path = PATHS[platform];
   if (!path) return null;
   const label = LABELS[platform];
+  const hasLabel = children != null && children !== '';
   return (
     <a
       href={hrefFor(platform, value)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={label}
+      aria-label={hasLabel ? undefined : label}
       title={label}
-      className={`inline-flex items-center justify-center transition-opacity hover:opacity-70 ${className}`}
+      className={`inline-flex items-center justify-center gap-2 transition-opacity hover:opacity-80 ${className}`}
     >
-      <svg viewBox="0 0 24 24" fill="currentColor" className="size-5" aria-hidden="true" {...rest}>
+      <svg viewBox="0 0 24 24" fill="currentColor" className="size-5 shrink-0" aria-hidden="true">
         <path d={path} />
       </svg>
+      {hasLabel && <span>{children}</span>}
     </a>
   );
 }
