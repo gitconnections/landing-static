@@ -1,30 +1,28 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import content from '../content.json';
+import { Inter, Poppins } from 'next/font/google';
 
-const d = content.design;
-const fonts = [d.headingFont, d.bodyFont]
-  .filter((f, i, a) => f && a.indexOf(f) === i)
-  .map((f) => `family=${f.replace(/ /g, '+')}:wght@400;500;600;700;800`)
-  .join('&');
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+const poppins = Poppins({
+  weight: ['400', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  display: 'swap',
+});
 
-export const metadata: Metadata = { title: content.title };
+export const metadata: Metadata = {
+  title: 'Crediinmuebles - Con un lote siempre ganas',
+  description: 'Inmoviliaria Crediinmuebles: Compre un lote o terreno con seguridad y confiabilidad.',
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
-      <head>
-        {fonts && (
-          <>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-            <link rel="stylesheet" href={`https://fonts.googleapis.com/css2?${fonts}&display=swap`} />
-          </>
-        )}
-      </head>
-      <body style={{ background: d.background, color: d.foreground, fontFamily: `'${d.bodyFont}', system-ui, sans-serif` }}>
-        {children}
-      </body>
+    <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
+      <body className="font-inter antialiased text-[#000000] bg-[#ffffff]">{children}</body>
     </html>
   );
 }

@@ -1,6 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default brand colors (overwritten per-landing on provision). */
+:root {
+  --color-primary: #2563eb;
+  --color-secondary: #1e293b;
+  --color-accent: #f59e0b;
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 img{max-width:100%;display:block}
