@@ -1,0 +1,24 @@
+{
+  "title": "Tu landing",
+  "design": {
+    "primary": "#6366f1",
+    "secondary": "#4f46e5",
+    "accent": "#ec4899",
+    "background": "#ffffff",
+    "foreground": "#0f172a",
+    "headingFont": "Inter",
+    "bodyFont": "Inter",
+    "radius": "12px"
+  },
+  "hero": {
+    "eyebrow": "Novedad",
+    "headline": "Tu título principal aquí",
+    "subhead": "Una frase de apoyo que explica tu propuesta con claridad y convence en segundos.",
+    "ctaLabel": "Empezar ahora"
+  },
+  "sections": [
+    { "title": "Beneficio uno", "body": "Describe el valor principal para tu cliente.", "bullets": [] },
+    { "title": "Beneficio dos", "body": "Otra razón para elegirte.", "bullets": [] }
+  ],
+  "images": []
+}
